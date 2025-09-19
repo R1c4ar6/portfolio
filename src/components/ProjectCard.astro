@@ -1,0 +1,64 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  technologies: string[];
+  link: string;
+}
+
+const { title, description, technologies, link } = Astro.props;
+---
+
+<article class="project-card">
+  <h3>{title}</h3>
+  <p>{description}</p>
+  <div class="tech-stack">
+    {technologies.map(tech => (
+      <span class="tech-tag">{tech}</span>
+    ))}
+  </div>
+  <a href={link} class="project-link">View Project</a>
+</article>
+
+<style>
+  .project-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 1rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .project-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  }
+  
+  .tech-stack {
+    margin: 1rem 0;
+  }
+  
+  .tech-tag {
+    background: #316ebd;
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    margin-right: 0.5rem;
+    display: inline-block;
+    margin-bottom: 0.5rem;
+  }
+  
+  .project-link {
+    display: inline-block;
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 0.5rem;
+  }
+  
+  .project-link:hover {
+    text-decoration: underline;
+  }
+</style>

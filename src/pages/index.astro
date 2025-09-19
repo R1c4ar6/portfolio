@@ -1,11 +1,70 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import { preview } from "astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const projects = [
+	{
+		title: "Project One",
+		description: "A brief description of my first project",
+		technologies: ["React", "Node.js", "MongoDB"],
+		link: "#",
+		image: "/project-one.png",
+	},
+	{
+		title: "Project Two",
+		description: "A brief description of my second project",
+		technologies: ["Vue", "Express", "PostgreSQL"],
+		link: "#",
+	},
+	{
+		title: "Project Three",
+		description: "A brief description of my third project",
+		technologies: ["Astro", "Tailwind", "GraphQL"],
+		link: "#",
+	},
+];
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Portfolio">
+	<section class="hero">
+		<h1>Richard Jiménez</h1>
+		<p>Web Developer & Designer</p>
+		<p>
+			Passionate about creating beautiful and functional web experiences
+			for user's experience as for business goals.
+		</p>
+	</section>
+
+	<section class="about">
+		<h2>About Me</h2>
+		<p>
+			I'm a web developer with experience in modern web technologies. I
+			love building responsive, accessible, and performant websites.
+		</p>
+	</section>
+
+	<section class="projects">
+		<h2>My Work</h2>
+		{
+			projects.map((project) => (
+				<ProjectCard
+					title={project.title}
+					description={project.description}
+					technologies={project.technologies}
+					link={project.link}
+				/>
+			))
+		}
+	</section>
+
+	<section class="contact">
+		<h2>Contact</h2>
+		<p>Email: richard.ajp04@gmail.com</p>
+		<p>
+			<a href="https://github.com">GitHub</a> •
+			<a href="https://linkedin.com">LinkedIn</a> •
+			<a href="https://twitter.com">Twitter</a>
+		</p>
+	</section>
 </Layout>

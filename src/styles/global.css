@@ -1,0 +1,54 @@
+:root {
+    --primary: #2563eb;
+    --secondary: #64748b;
+    --background: #f8fafc;
+    --altbackground: url('../assets/pattern-randomized.svg') no-repeat center/cover fixed;
+    --herobackground: url('../assets/parabolic-rectangle.svg');
+    --text: #1e293b;
+}
+
+body {
+    font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: var(--text);
+    background: var(--altbackground);
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.hero {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.projects {
+    display: grid;
+    gap: 2rem;
+}
+
+/* .project-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+}
+
+.tech-tag {
+    background: #316ebd;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    margin-right: 0.5rem;
+}
+
+.project-link {
+    color: #2563eb;
+    text-decoration: none;
+} */
