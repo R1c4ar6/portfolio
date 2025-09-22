@@ -1,15 +1,15 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import ProjectCard from "../components/ProjectCard.astro";
-import { preview } from "astro";
+import prev1 from "../assets/project-one-prev.webp";
 
 const projects = [
 	{
 		title: "Project One",
 		description: "A brief description of my first project",
 		technologies: ["React", "Node.js", "MongoDB"],
-		link: "#",
-		image: "/project-one.png",
+		link: "https://littlegreatminds.netlify.app/",
+		img: prev1,
 	},
 	{
 		title: "Project Two",
@@ -28,8 +28,8 @@ const projects = [
 
 <Layout title="Portfolio">
 	<section class="hero">
-		<h1>Richard Jiménez</h1>
-		<p>Web Developer & Designer</p>
+		<h1>Richard A. Jiménez P.</h1>
+		<h4>Web App Developer</h4>
 		<p>
 			Passionate about creating beautiful and functional web experiences
 			for user's experience as for business goals.
@@ -40,7 +40,8 @@ const projects = [
 		<h2>About Me</h2>
 		<p>
 			I'm a web developer with experience in modern web technologies. I
-			love building responsive, accessible, and performant websites.
+			love building responsive, accessible, and performant websites that
+			speak for themselves.
 		</p>
 	</section>
 
@@ -49,6 +50,7 @@ const projects = [
 		{
 			projects.map((project) => (
 				<ProjectCard
+					img={project.img}
 					title={project.title}
 					description={project.description}
 					technologies={project.technologies}
@@ -60,11 +62,14 @@ const projects = [
 
 	<section class="contact">
 		<h2>Contact</h2>
-		<p>Email: richard.ajp04@gmail.com</p>
+		<p>Email: rjtech@disroot.org</p>
 		<p>
-			<a href="https://github.com">GitHub</a> •
-			<a href="https://linkedin.com">LinkedIn</a> •
-			<a href="https://twitter.com">Twitter</a>
+			<a target="_blank" href="https://github.com/R1c4ar6">GitHub</a> •
+			<a
+				target="_blank"
+				href="www.linkedin.com/in/richard-jiménez-9a57b41b4">LinkedIn</a
+			> •
+			<a target="_blank" href="https://twitter.com">Twitter</a>
 		</p>
 	</section>
 </Layout>

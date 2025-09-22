@@ -1,15 +1,20 @@
 ---
+import { Image } from "astro:assets";
 interface Props {
   title: string;
   description: string;
   technologies: string[];
   link: string;
+  img?: any;
 }
 
-const { title, description, technologies, link } = Astro.props;
+const { title, description, technologies, link, img } = Astro.props;
 ---
 
 <article class="project-card">
+  {img && (
+    <Image src={img} alt={`${title} preview`} class="project-img" loading={"eager"} />
+  )}
   <h3>{title}</h3>
   <p>{description}</p>
   <div class="tech-stack">
@@ -17,7 +22,7 @@ const { title, description, technologies, link } = Astro.props;
       <span class="tech-tag">{tech}</span>
     ))}
   </div>
-  <a href={link} class="project-link">View Project</a>
+  <a href={link} target="_blank" class="project-link">View Project</a>
 </article>
 
 <style>
@@ -29,16 +34,16 @@ const { title, description, technologies, link } = Astro.props;
     margin-bottom: 1rem;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
-  
+
   .project-card:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0,0,0,0.15);
   }
-  
+
   .tech-stack {
     margin: 1rem 0;
   }
-  
+
   .tech-tag {
     background: #316ebd;
     color: white;
@@ -49,7 +54,7 @@ const { title, description, technologies, link } = Astro.props;
     display: inline-block;
     margin-bottom: 0.5rem;
   }
-  
+
   .project-link {
     display: inline-block;
     color: #2563eb;
@@ -57,8 +62,16 @@ const { title, description, technologies, link } = Astro.props;
     font-weight: 500;
     margin-top: 0.5rem;
   }
-  
+
   .project-link:hover {
     text-decoration: underline;
+  }
+
+  .project-img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    object-fit: cover;
   }
 </style>
