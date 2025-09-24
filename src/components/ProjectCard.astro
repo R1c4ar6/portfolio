@@ -1,5 +1,117 @@
 ---
 import { Image } from "astro:assets";
+export interface Props {
+    img: any;
+    title: string;
+    description: string;
+    technologies: string[];
+    link: string;
+}
+
+const { img, title, description, technologies, link } = Astro.props;
+---
+
+<article class="project-card">
+    <div class="project-image">
+        {img && (
+    <Image src={img} alt={`${title} preview`} loading={"lazy"} />
+  )}
+        <div class="project-overlay">
+            <a href={link} target="_blank" class="project-link">View Project</a>
+        </div>
+    </div>
+    <div class="project-content">
+        <h3>{title}</h3>
+        <p>{description}</p>
+        <div class="project-technologies">
+            {technologies.map(tech => <span class="tech-tag">{tech}</span>)}
+        </div>
+    </div>
+</article>
+
+<style>
+    .project-card {
+        background: var(--surface);
+        border-radius: 15px;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+    
+    .project-image {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .project-image img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+    
+    .project-card:hover .project-image img {
+        transform: scale(1.05);
+    }
+    
+    .project-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(37, 99, 235, 0.9);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .project-card:hover .project-overlay {
+        opacity: 1;
+    }
+    
+    .project-link {
+        color: white;
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        border: 2px solid white;
+        border-radius: 25px;
+        font-weight: 600;
+    }
+    
+    .project-content {
+        padding: 1.5rem;
+    }
+    
+    .project-content h3 {
+        margin-bottom: 0.5rem;
+        font-size: 1.3rem;
+    }
+    
+    .project-technologies {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 1rem;
+    }
+    
+    .tech-tag {
+        background: var(--primary);
+        color: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: 15px;
+        font-size: 0.8rem;
+    }
+</style>
+
+<!-- ---
+import { Image } from "astro:assets";
 interface Props {
   title: string;
   description: string;
@@ -74,4 +186,4 @@ const { title, description, technologies, link, img } = Astro.props;
     margin-bottom: 1rem;
     object-fit: cover;
   }
-</style>
+</style> -->
