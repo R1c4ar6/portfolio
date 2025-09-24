@@ -1,46 +1,20 @@
-# Astro Starter Kit: Basics
+# Richard Jiménez Portfolio
 
-```sh
-npm create astro@latest -- --template basics
-```
+Welcome to my personal portfolio website!  
+Here you'll find a showcase of my web development projects, skills, and contact information.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## 🚀 About Me
 
-## 🚀 Project Structure
+I'm Richard A. Jiménez P., a web app developer passionate about creating beautiful and functional web experiences. I specialize in modern web technologies and enjoy building responsive, accessible, and performant websites.
 
-Inside of your Astro project, you'll see the following folders and files:
+## 📫 Contact
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
+Feel free to reach out!
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+- **Email:** [rjtech@disroot.org](mailto:rjtech@disroot.org)
+- **GitHub:** [R1c4ar6](https://github.com/R1c4ar6)
+- **LinkedIn:** [Richard Jiménez](https://www.linkedin.com/in/richard-jiménez-9a57b41b4)
 
-## 🧞 Commands
+---
 
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Thank you for visiting my portfolio!
