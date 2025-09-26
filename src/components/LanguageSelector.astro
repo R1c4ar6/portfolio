@@ -1,0 +1,102 @@
+---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+import gbFlag from '../assets/gb.svg';
+import esFlag from '../assets/es.svg';
+
+const { currentLang = 'en' } = Astro.props;
+const supportedLanguages = ['en', 'es'];
+const slug = Astro.url.pathname.replace(/^\/(en|es)/, '') || '/';
+
+const flag = (l: string) =>
+  ({ en: '🇬🇧', es: '🇪🇸' }[l] ?? '🏳️');   
+---
+
+<div class="language-selector">
+  <label for="language-select" class="visually-hidden">Select language</label>
+  <select
+    id="language-select"
+    aria-label="Select language"
+    onchange="window.location.href=this.value"
+  >
+    {supportedLanguages.map(lang => (
+      <option
+        value={getRelativeLocaleUrl(lang, slug)}
+        selected={currentLang === lang}
+        lang={lang}
+      >
+        {flag(lang)}          
+      </option>
+    ))}
+  </select>
+</div>
+
+<style>
+  /* wrapper */
+  .language-selector {
+    position: absolute;
+    top: 1rem;                      /* a little breathing room */
+    /* follow the same right gutter as .container */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: flex-end;
+    pointer-events: none;             /* let clicks pass through the spacer */
+    z-index: 1000;
+  }
+
+  /* the actual control */
+  .language-selector select {
+    pointer-events: auto;             /* re-enable clicks */
+    padding: 0.65rem 2.25rem 0.65rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text);
+    background: rgba(255,255,255,0.08)
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23f1f5f9" viewBox="0 0 16 16"><path d="M4.545 6.714 4.11 8H3l1.862-5h1.284L8 8H6.833l-.435-1.286zm1.634-.736L5.5 3.956h-.049l-.679 2.022zM0 2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v3h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zm7.138 9.995q.289.451.63.846c-.748.575-1.673 1.001-2.768 1.292.178.217.451.635.555.867 1.125-.359 2.08-.844 2.886-1.494.777.665 1.739 1.165 2.93 1.472.133-.254.414-.673.629-.89-1.125-.253-2.057-.694-2.82-1.284.681-.747 1.222-1.651 1.621-2.757H14V8h-3v1.047h.765c-.318.844-.74 1.546-1.272 2.13a6 6 0 0 1-.415-.492 2 2 0 0 1-.94.31"/></svg>')
+                no-repeat right 0.9rem center / 1rem;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 50px;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    transition: all 0.3s ease;
+  }
+
+  /* interaction states */
+  .language-selector select:hover,
+  .language-selector select:focus {
+    background-color: rgba(255,255,255,0.15);
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  }
+  .language-selector select:focus {
+    outline: none;
+  }
+  /* .language-option {
+    background: var(--surface);
+    color: var(--text);
+  } */
+
+  /* keep the accessibility helper hidden */
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+  }
+
+  /* mobile tweak – matches your global 768 px breakpoint */
+  @media (max-width: 768px) {
+    .language-selector {
+      padding: 0 1rem;
+    }
+  }
+</style>
