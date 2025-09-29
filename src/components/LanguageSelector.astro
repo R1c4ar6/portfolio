@@ -1,11 +1,24 @@
 ---
 import { getRelativeLocaleUrl } from 'astro:i18n';
-import gbFlag from '../assets/gb.svg';
-import esFlag from '../assets/es.svg';
 
 const { currentLang = 'en' } = Astro.props;
 const supportedLanguages = ['en', 'es'];
-const slug = Astro.url.pathname.replace(/^\/(en|es)/, '') || '/';
+
+const getSlug = () => {
+  const pathname = Astro.url.pathname;
+  
+  if (pathname === '/') return '/';
+  
+  for (const locale of supportedLanguages) {
+    if (pathname.startsWith(`/${locale}/`)) {
+      return pathname.slice(locale.length + 2) || '/';
+    }
+  }
+  
+  return pathname;
+};
+
+const slug = getSlug();
 
 const flag = (l: string) =>
   ({ en: '🇬🇧', es: '🇪🇸' }[l] ?? '🏳️');   
@@ -24,7 +37,7 @@ const flag = (l: string) =>
         selected={currentLang === lang}
         lang={lang}
       >
-        {flag(lang)}          
+        {flag(lang)} {lang.toUpperCase()}     
       </option>
     ))}
   </select>
